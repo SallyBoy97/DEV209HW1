@@ -73,11 +73,27 @@ transformButton.addEventListener('click', function () {
          // Apply styles to the li element
          transformedLiElement.style.fontFamily = 'Courier New, monospace';
          transformedLiElement.style.color = 'red';
+         transformedLiElement.style.fontWeight = 'bold';
         // Append the li element to the ul element for the second page
         transformedUlElement.appendChild(transformedLiElement);
+ 
     }
-
-   // Show the transformed section
-   transformedHeaderElement.style.display = 'block';
-   transformedUlElement.style.display = 'block';
+    //create button to refresh page
+    var refreshbutton = document.createElement('button');
+    refreshbutton.textContent = 'Reload to Word Entry';
+    refreshbutton.style.display = 'block';
+    document.body.appendChild(refreshbutton); // show the button
+     
+    // Show the transformed section
+    transformedHeaderElement.style.display = 'block';
+    transformedUlElement.style.display = 'block';
+    //show on click refresh page after removing 2nd section ui elements
+    refreshbutton.click(location.reload); 
+    refreshbutton.addEventListener('click', function () {
+        transformedHeaderElement.style.display = 'none';
+        transformedUlElement.style.display = 'none';
+        refreshbutton.style.display = 'none';
+        //reloads page
+        location.reload();  
+    });
 });
